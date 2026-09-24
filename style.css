@@ -1,0 +1,21 @@
+.container {
+    width: 900px;
+    height: 600px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    
+
+}
+
+.item {
+    flex: none;
+    width: 6.25%;
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+/*
+.item:hover {
+    background-color: black;
+}
+*/
