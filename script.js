@@ -5,34 +5,61 @@ btn.textContent = "new";
 
 body.appendChild(btn);
 
-//Creacion de la cuadricula
 const container = document.querySelector(".container");
 
-for (let i = 0; i < 256; i++){
+btn.addEventListener("click", (event) => {
+    let size = prompt("Ingresa el tamano de la cuadricula", "ej: 20");
+    while (size > 100) {
+        size = prompt("la cuadricula no puede ser mayor a 100");
+    }
+
+    container.replaceChildren(); //Elimina la cuadricula antigua
+
+    const items = generateSquares(size);
+
+    defineWidthSquares(items, size);
+
+    paint(items);
+});
+
+function generateSquares(size) {
+    let numOfItems = size * size; 
+
+    for (let i = 0; i < numOfItems; i++){
     const item = document.createElement("div");
 
     item.classList.add("item");
 
     container.appendChild(item);
+    }
+
+    return document.querySelectorAll(".item");
 }
 
-let mouseDown = false;
-
-items.forEach((item) => {
-
-    item.addEventListener("mousedown", () => {
-        mouseDown = true;
-        item.style.background = "black";
+function defineWidthSquares(items, size) {
+    items.forEach((item) => {
+        item.style.width = `${100 / size}%`;
     });
+}
 
-    item.addEventListener("mouseover", () => {
-        if (mouseDown) {
+function paint(items) {
+    let mouseDown = false;
+
+    items.forEach((item) => {
+
+        item.addEventListener("mousedown", () => {
+            mouseDown = true;
             item.style.background = "black";
-        }
+        });
+
+        item.addEventListener("mouseover", () => {
+            if (mouseDown) {
+                item.style.background = "black";
+            }
+        });
     });
-});
 
-document.addEventListener("mouseup", () => {
-    mouseDown = false;
-});
-
+    document.addEventListener("mouseup", () => {
+        mouseDown = false;
+    });
+}

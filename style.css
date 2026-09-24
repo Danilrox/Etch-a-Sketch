@@ -4,18 +4,12 @@
     margin: auto;
     display: flex;
     flex-wrap: wrap;
-    
-
+    box-sizing: border-box;
+    border: 1px solid black;
 }
 
 .item {
     flex: none;
-    width: 6.25%;
     box-sizing: border-box;
     border: 1px solid black;
 }
-/*
-.item:hover {
-    background-color: black;
-}
-*/
